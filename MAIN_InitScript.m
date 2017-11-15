@@ -33,6 +33,6 @@ T = 0.001; %sample time. (USARE QUESTO VALORE.)
 
 %ESEMPIO DI MOVIMENTAZIONE DEL ROBOT
 %
-JOINT = [6.65 -3.15 0 0 0.25 0]; %(m , m, rad, rad, m, rad)
+JOINT = [0 0 0 0 0.25 0]; %(m , m, rad, rad, m, rad)
 %COMANDO: 
 SendPoseToVRep(JOINT);
