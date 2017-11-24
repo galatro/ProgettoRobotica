@@ -7,7 +7,7 @@ Jg=JacobianoGeometrico(qsym);
 Jg = [Jg(1:3,:);Jg(6,:)];
 %condizione di 
 w1 = sqrt (det (Jg*Jg'));
-n = 6;
+n = 6 ;
 limiti_giunto_inf = [-200 -200 -2.7925  -2.7925 0 -2*pi];   %m m rad rad m rad
 limiti_giunto_sup = [ 200  200  2.7925   2.7925 0.5 2*pi]; %m m rad rad m  rad
 w2 = 0;
