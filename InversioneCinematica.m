@@ -6,10 +6,12 @@ tf = 10; %final time
 tfsim = 15;
 T = 0.001; %sample time
 
-Kp = diag([100 100 10]);
+Kp = diag([100 100 10 10]);
 t = (0:T:tf)';
 
-Ja  = JacobianoAnalitico( q , eul)
+
+
+
 
 end
 
