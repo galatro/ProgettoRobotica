@@ -26,7 +26,6 @@ q3=q(3);
 q4=q(4);
 q5=q(5);
 q6=q(6);
-
 q0 = subs (q0sym);
 end
 
