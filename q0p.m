@@ -6,7 +6,8 @@ qsym=[q1 q2 q3 q4 q5 q6];
 Jg=JacobianoGeometrico(qsym);
 Jg = [Jg(1:3,:);Jg(6,:)];
 %condizione di 
-w1 = sqrt (det (Jg*Jg'));
+%w1 = sqrt (det (Jg*Jg')); 
+w1=0;
 n = 6 ;
 limiti_giunto_inf = [-200 -200 -2.7925  -2.7925 0 -2*pi];   %m m rad rad m rad
 limiti_giunto_sup = [ 200  200  2.7925   2.7925 0.5 2*pi]; %m m rad rad m  rad
@@ -18,7 +19,7 @@ end
     w2 = (-1/(2*n)) * w2;
 
 w = w1+w2;
-q0sym = gradient (w);
+q0sym = jacobian(w,qsym);
 q1=q(1);
 q2=q(2);
 q3=q(3);
