@@ -22,8 +22,6 @@ else
     %calcolo centro e raggio dati tre punti p0, pf e pvia
     p = [p0, pvia, pf];
     [C, r] = circumference (p);
-    C=single(C);
-    r=single(r);
     
     %calcolo angolo tetaf tra p0 e pf in senso orario
     a=atan2(p0(2)-C(2),p0(1)-C(1));
@@ -49,12 +47,12 @@ else
     for i=1:length(t)
         pd(i,1:3) = C+R*pdp(i,1:3)';
     end
-    plot(pd(:,1),pd(:,2))
-    xd = 0;
-    dxd = 0;
-    ddxd= 0;
+    %plot(pd(:,1),pd(:,2))
     %calcolo 
 end
+    xd = pd;
+    dxd = 0;
+    ddxd= 0;
 end
 
 

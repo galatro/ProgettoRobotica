@@ -1,10 +1,10 @@
 function [p, phi, R, A] = cindir(q)
-alpha = [-pi/2 pi/2 0 0 0 0];
-teta = [pi pi/2 q(3)+pi/2 q(4) 0 q(6)];
-a = [ 0 0 0.467 0.4005 0 0];
-d = [q(1) q(2)+0.35 0.8735 0 -q(5)-0.045-0.0884 0];
+alpha = [pi/2 pi/2 0 0 0 0];
+teta = [0 pi/2 q(3) q(4) 0 q(6)];
+a = [ 0 0.35 0.467 0.4005 0 0];
+d = [q(1) q(2) 0 0.8735 q(5)-0.045-0.0884 0];
 
-R0b=rotazioneElementare(pi/2,'z')*rotazioneElementare(pi/2,'y');
+R0b=rotazioneElementare(pi/2,'y')*rotazioneElementare(pi,'z');
 A0b=[R0b [0 0 0]',
     0 0 0 1];
 
@@ -33,5 +33,5 @@ R=Abe(1:3,1:3);
 %R=Rz(phi)*Ry(teta)*Rx(psi) 
 %ze e xe sono ruotati di 180 alla terna base, per costruzione. 
 phi=[atan2(R(2,1),R(1,1)), atan2(-R(3,1),sqrt(R(3,2)^2 + R(3,3)^2)), atan2(R(3,2),R(3,3))]';
-phi=phi*180/pi;
+
 

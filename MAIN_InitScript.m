@@ -1,6 +1,6 @@
 clc;
 warning off
-%StopVrepSimulation(); %pre precauzione
+StopVrepSimulation(); %pre precauzione
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%   Set Path  %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -33,6 +33,12 @@ T = 0.001; %sample time. (USARE QUESTO VALORE.)
 
 %ESEMPIO DI MOVIMENTAZIONE DEL ROBOT
 %
-JOINT = [0 0 0 0 0.25 0]; %(m , m, rad, rad, m, rad)
+JOINT = [0 0 0 0 0 0]; %(m , m, rad, rad, m, rad)
 %COMANDO: 
 SendPoseToVRep(JOINT);
+
+[a,b,c]=size(q);
+for i=1:1:c
+    SendPoseToVRep(q(:,:,i));
+    pause(0.005);
+end
