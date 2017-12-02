@@ -16,10 +16,9 @@ x  = cindirSim( q );
 o1=[2.875 -1.5];
 o2=[6.65 -3.15];
 if norm( x(1:2)' - o1) > norm( x(1:2)' - o2)
-    w = 0.05*dw2+0.95*dw4;
+    w = 0.3*dw2+0.7*dw4;
 else
-    w = 0.05*dw2+0.95*dw3;
-    disp('primo ostacolo')
+    w = 0.3*dw2+0.7*dw3;
 end
 q0 = eval(subs(w));
 q0=q0'

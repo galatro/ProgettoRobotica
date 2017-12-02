@@ -40,5 +40,5 @@ SendPoseToVRep(JOINT);
 [a,b,c]=size(q);
 for i=1:1:c
     SendPoseToVRep(q(:,:,i));
-    pause(0.005);
+    pause(0.002);
 end
