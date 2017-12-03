@@ -1,11 +1,11 @@
 clc
 clear all
 
-tf = 5; %final time
-tfsim = 5.1;
+tf = 10; %final time
+tfsim = 10.1;
 T = 0.001; %sample time
 
-Kp = diag([100 100 100 10]);
+Kp = diag([1000 1000 1000 10]);
 t = (0:T:tf)';
 
 

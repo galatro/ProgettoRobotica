@@ -19,9 +19,8 @@ if norm( x(1:2)' - o1) > norm( x(1:2)' - o2)
     w = 0.05*dw2+0.95*dw4;
 else
     w = 0.05*dw2+0.95*dw3;
-    disp('primo ostacolo')
 end
 q0 = eval(subs(w));
-q0=q0'
+q0=q0';
 end
 
