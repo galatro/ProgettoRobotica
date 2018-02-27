@@ -37,8 +37,13 @@ JOINT = [0 0 0 0 0 0]; %(m , m, rad, rad, m, rad)
 %COMANDO: 
 SendPoseToVRep(JOINT);
 
+% [a,b,c]=size(q);
+% for i=1:1:a
+%     SendPoseToVRep(q(i,:));
+%     pause(0.0005);
+% end
 [a,b,c]=size(q);
 for i=1:1:c
-    SendPoseToVRep(q(:,:,i));
-    pause(0.002);
+    SendPoseToVRep(q(:,i));
+    pause(0.0005);
 end

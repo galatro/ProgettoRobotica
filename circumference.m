@@ -1,9 +1,7 @@
 function [ C, r ] = circumference( p )
 %CIRCUMFERENCE Summary of this function goes here
 %   Detailed explanation goes here
-syms Cx;
-syms Cy;
-syms r;
+syms Cx Cy r;
 
 for i=1:3
     eq(i)= (p(1,i)-Cx)^2 + (p(2,i)-Cy)^2 - r^2;

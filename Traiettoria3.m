@@ -1,4 +1,4 @@
-function [ xd, dxd, ddxd ] = Traiettoria( points, obstacle, t )
+function [ xd, dxd, ddxd ] = Traiettoria3( points, obstacle, t )
 
 %TRAIETTORIA Summary of this function goes here
 %   Detailed explanation goes here
@@ -56,8 +56,6 @@ v0 = 0;
 vf = 0;
 xd = SottoTraiettoria( points, v0, vf, t(1) );
 xd(:,4)=0;
-dxd = [0 0 0 0; diff(xd)/T];
-ddxd = [0 0 0 0; diff(dxd)/T];
 
 %circonferenza da pfermata a pfermata2 passando per pvia
 points = [pfermata pvia pfermata2];
@@ -65,12 +63,7 @@ v0 = 0;
 vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(2) );
 xd2(:,4)=0;
-dxd2 = [0 0 0 0; diff(xd2)/T];
-ddxd2 = [0 0 0 0; diff(dxd2)/T];
-
 xd = [xd;xd2];
-dxd = [dxd;dxd2];
-ddxd = [ddxd;ddxd2];
 
 plot (xd(:,1), xd(:,2),'b')
 hold on
@@ -84,27 +77,30 @@ tf = 3400;
 
 plot (xd(:,1), xd(:,2),'k')
 
-%retta da pfermata2 a ppick+5cm 
+%retta da pvia a ppick+5cm 
 points = [pfermata2 ppickaway];
 v0 = 0;
 vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(3) );
 xd2(:,4)=0;
-dxd2 = [0 0 0 0; diff(xd2)/T];
-ddxd2 = [0 0 0 0; diff(dxd2)/T];
 xd = [xd;xd2];
-dxd = [dxd;dxd2];
-ddxd = [ddxd;ddxd2];
 
 plot (xd2(:,1), xd2(:,2),'b')
 
-
 %smorzatura
-t0 = 5200;
-tf = 8600;
+t0 = 4500;
+tf = size(xd,1)
+%tf = 10000;
 [ xd, dxd ] = smorzatura( xd, dxd, t0, tf, T );
 plot (xd(:,1), xd(:,2),'k')
 
+
+% figure (2)
+% plot (dxd(:,1))
+% figure (3)
+% plot (dxd(:,2))
+% figure (4)
+% plot (dxd(:,3))
 
 %movimento sull'asse z per il prelievo dell'oggetto
 points = [ppickaway ppick];
@@ -112,22 +108,14 @@ v0 = 0;
 vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(4) );
 xd2(:,4)=0;
-dxd2 = [0 0 0 0; diff(xd2)/T];
-ddxd2 = [0 0 0 0; diff(dxd2)/T];
 xd = [xd;xd2];
-dxd = [dxd;dxd2];
-ddxd = [ddxd;ddxd2];
 
 points = [ppick ppickaway];
 v0 = 0;
 vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(5) );
 xd2(:,4)=0;
-dxd2 = [0 0 0 0; diff(xd2)/T];
-ddxd2 = [0 0 0 0; diff(dxd2)/T];
 xd = [xd;xd2];
-dxd = [dxd;dxd2];
-ddxd = [ddxd;ddxd2];
 
 
 %%
@@ -168,11 +156,7 @@ v0 = 0;
 vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(6) );
 xd2(:,4)=0;
-dxd2 = [0 0 0 0; diff(xd2)/T];
-ddxd2 = [0 0 0 0; diff(dxd2)/T];
 xd = [xd;xd2];
-dxd = [dxd;dxd2];
-ddxd = [ddxd;ddxd2];
 
 plot (xd2(:,1), xd2(:,2))
 
@@ -182,11 +166,7 @@ v0 = 0;
 vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(7) );
 xd2(:,4)=0;
-dxd2 = [0 0 0 0; diff(xd2)/T];
-ddxd2 = [0 0 0 0; diff(dxd2)/T];
 xd = [xd;xd2];
-dxd = [dxd;dxd2];
-ddxd = [ddxd;ddxd2];
 
 plot (xd2(:,1), xd2(:,2),'b')
 
@@ -203,49 +183,44 @@ v0 = 0;
 vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(8) );
 xd2(:,4)=0;
-dxd2 = [0 0 0 0; diff(xd2)/T];
-ddxd2 = [0 0 0 0; diff(dxd2)/T];
 xd = [xd;xd2];
-dxd = [dxd;dxd2];
-ddxd = [ddxd;ddxd2];
 
 plot (xd2(:,1), xd2(:,2),'b')
+plot (pvia(1), pvia(2), '+c')
 %smorzatura
-t0 = 24000;
-tf = 28000;
+t0 = 23000;
+tf = size(xd,1);
 [ xd, dxd ] = smorzatura( xd, dxd, t0, tf, T );
 plot (xd(:,1), xd(:,2),'k')
 
-figure (2)
-plot (dxd(:,1))
-title('velocità x')
-figure (3)
-plot (dxd(:,2))
-title('velocità y')
+
+
 %movimento sull'asse z per la posa dell'oggetto
 points = [pfaway pf];
 v0 = 0;
 vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(9) );
 xd2(:,4)=0;
-dxd2 = [0 0 0 0; diff(xd2)/T];
-ddxd2 = [0 0 0 0; diff(dxd2)/T];
 xd = [xd;xd2];
-dxd = [dxd;dxd2];
-ddxd = [ddxd;ddxd2];
 
 points = [pf pfaway];
 v0 = 0;
 vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(10) );
 xd2(:,4)=0;
-dxd2 = [0 0 0 0; diff(xd2)/T];
-ddxd2 = [0 0 0 0; diff(dxd2)/T];
 xd = [xd;xd2];
-dxd = [dxd;dxd2];
-ddxd = [ddxd;ddxd2];
 
+dxd = [0 0 0 0; diff(xd)/T];
+ddxd = [0 0 0 0; diff(dxd)/T];
+
+figure (2)
+plot (dxd(:,1))
+figure (3)
+plot (dxd(:,2))
 figure (4)
+plot (dxd(:,3))
+
+figure (5)
 plot3 (xd(:,1), xd(:,2), xd(:,3))
 hold on
 plot3 (p0(1), p0(2), p0(3), 'xk')
@@ -257,4 +232,3 @@ plot3 (ppickaway(1), ppickaway(2), ppickaway(3), '+k')
 plot3 (pfaway(1), pfaway(2), pfaway(3), '+k')
 
 end
-
