@@ -1,0 +1,6 @@
+1) disegnare terne							MIK
+2) sistemare KP PD							GIO
+3) sistemare KP dinamica inversa			MIK
+4) controllare tempi main2					GIO
+5) controllare tempi main3					GIO
+6) aggiustare nomi dei file
