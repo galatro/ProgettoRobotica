@@ -9,21 +9,22 @@ for i=length(qd):length(qd)+3000
 end
 tf=length(qd)*T;
 t=[0:T:tf-T]';
-Kp=100000*ones(6,1);
-Kd=500*ones(6,1);
+Kp=100*[1;1;1;1;0.3;1];
+Kd=150*[1;1;1;1;0.3;1];
+%aumentare KP aumenta l'oscillazione, aumentare Kd aumenta la velocità
 
 sim('PD_gravita2015.slx')
 
 figure(1)
 plot(qd(:,1))
-%hold on
-figure(3)
+hold on
 plot(q(:,1))
 legend('qd','q')
 
 figure(2)
 plot(qd(:,2))
-% hold on
-figure(4)
+hold on
 plot(q(:,2))
 legend('qd','q')
+
+[limiti] = controllo_coppia(tau)

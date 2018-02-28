@@ -55,15 +55,22 @@ points = [p0 pfermata];
 v0 = 0;
 vf = 0;
 xd = SottoTraiettoria( points, v0, vf, t(1) );
-xd(:,4)=0;
+xd(:,4)=pi;
+dxd = [0 0 0 0; diff(xd)/T];
+ddxd = [0 0 0 0; diff(dxd)/T];
 
 %circonferenza da pfermata a pfermata2 passando per pvia
 points = [pfermata pvia pfermata2];
 v0 = 0;
 vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(2) );
-xd2(:,4)=0;
+xd2(:,4)=pi;
+dxd2 = [0 0 0 0; diff(xd2)/T];
+ddxd2 = [0 0 0 0; diff(dxd2)/T];
+
 xd = [xd;xd2];
+dxd = [dxd;dxd2];
+ddxd = [ddxd;ddxd2];
 
 plot (xd(:,1), xd(:,2),'b')
 hold on
@@ -82,14 +89,18 @@ points = [pfermata2 ppickaway];
 v0 = 0;
 vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(3) );
-xd2(:,4)=0;
+xd2(:,4)=pi;
+dxd2 = [0 0 0 0; diff(xd2)/T];
+ddxd2 = [0 0 0 0; diff(dxd2)/T];
 xd = [xd;xd2];
+dxd = [dxd;dxd2];
+ddxd = [ddxd;ddxd2];
 
 plot (xd2(:,1), xd2(:,2),'b')
 
 %smorzatura
 t0 = 4500;
-tf = size(xd,1)
+tf = size(xd,1);
 %tf = 10000;
 [ xd, dxd ] = smorzatura( xd, dxd, t0, tf, T );
 plot (xd(:,1), xd(:,2),'k')
@@ -107,15 +118,23 @@ points = [ppickaway ppick];
 v0 = 0;
 vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(4) );
-xd2(:,4)=0;
+xd2(:,4)=pi;
+dxd2 = [0 0 0 0; diff(xd2)/T];
+ddxd2 = [0 0 0 0; diff(dxd2)/T];
 xd = [xd;xd2];
+dxd = [dxd;dxd2];
+ddxd = [ddxd;ddxd2];
 
 points = [ppick ppickaway];
 v0 = 0;
 vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(5) );
-xd2(:,4)=0;
+xd2(:,4)=pi;
+dxd2 = [0 0 0 0; diff(xd2)/T];
+ddxd2 = [0 0 0 0; diff(dxd2)/T];
 xd = [xd;xd2];
+dxd = [dxd;dxd2];
+ddxd = [ddxd;ddxd2];
 
 
 %%
@@ -155,8 +174,12 @@ points = [ppickaway pfermata];
 v0 = 0;
 vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(6) );
-xd2(:,4)=0;
+xd2(:,4)=pi;
+dxd2 = [0 0 0 0; diff(xd2)/T];
+ddxd2 = [0 0 0 0; diff(dxd2)/T];
 xd = [xd;xd2];
+dxd = [dxd;dxd2];
+ddxd = [ddxd;ddxd2];
 
 plot (xd2(:,1), xd2(:,2))
 
@@ -165,8 +188,12 @@ points = [pfermata pvia pfermata2];
 v0 = 0;
 vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(7) );
-xd2(:,4)=0;
+xd2(:,4)=pi;
+dxd2 = [0 0 0 0; diff(xd2)/T];
+ddxd2 = [0 0 0 0; diff(dxd2)/T];
 xd = [xd;xd2];
+dxd = [dxd;dxd2];
+ddxd = [ddxd;ddxd2];
 
 plot (xd2(:,1), xd2(:,2),'b')
 
@@ -182,8 +209,12 @@ points = [pfermata2 pfaway];
 v0 = 0;
 vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(8) );
-xd2(:,4)=0;
+xd2(:,4)=pi;
+dxd2 = [0 0 0 0; diff(xd2)/T];
+ddxd2 = [0 0 0 0; diff(dxd2)/T];
 xd = [xd;xd2];
+dxd = [dxd;dxd2];
+ddxd = [ddxd;ddxd2];
 
 plot (xd2(:,1), xd2(:,2),'b')
 plot (pvia(1), pvia(2), '+c')
@@ -200,27 +231,30 @@ points = [pfaway pf];
 v0 = 0;
 vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(9) );
-xd2(:,4)=0;
+xd2(:,4)=pi;
+dxd2 = [0 0 0 0; diff(xd2)/T];
+ddxd2 = [0 0 0 0; diff(dxd2)/T];
 xd = [xd;xd2];
+dxd = [dxd;dxd2];
+ddxd = [ddxd;ddxd2];
 
 points = [pf pfaway];
 v0 = 0;
 vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(10) );
-xd2(:,4)=0;
+xd2(:,4)=pi;
+dxd2 = [0 0 0 0; diff(xd2)/T];
+ddxd2 = [0 0 0 0; diff(dxd2)/T];
 xd = [xd;xd2];
-
-dxd = [0 0 0 0; diff(xd)/T];
-ddxd = [0 0 0 0; diff(dxd)/T];
+dxd = [dxd;dxd2];
+ddxd = [ddxd;ddxd2];
 
 figure (2)
 plot (dxd(:,1))
 figure (3)
 plot (dxd(:,2))
-figure (4)
-plot (dxd(:,3))
 
-figure (5)
+figure (4)
 plot3 (xd(:,1), xd(:,2), xd(:,3))
 hold on
 plot3 (p0(1), p0(2), p0(3), 'xk')

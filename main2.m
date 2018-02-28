@@ -6,9 +6,7 @@ T = 0.001; %sample time
 Kp = diag([500 500 500 50]);
 Kn = diag([1 1 1 1 1 1]);
 
-t_t = [15; 0.5; 0.5; 15; 0.5; 0.5];
-%retta + circonferenza + retta + pickDown + pickUp + retta + circonferenza
-%+ retta + pickDown + pickUp
+t_t = [26; 0.5; 0.5; 39; 0.5; 0.5];
 tf = sum(t_t)+0.001*(length(t_t)-1); %final time
 tfsim = tf+0.010;
 t = (0:T:tf)';

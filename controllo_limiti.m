@@ -33,13 +33,11 @@ for i=1:c
         %vel
         if abs(dq(j,1,i))>dqmax(j)
             vel(k,j)=vel(k,j)+1;
+            dq(j,1,i)
         end
         %acc
         if abs(ddq(j,1,i))>ddqmax(j)
             acc(k,j)=acc(k,j)+1;
-            if j==5 && k==6
-                ddq(j,1,i)
-            end
         end
         %controllo distanza ostacoli
         p=[q(1,1,i) q(2,1,i)];

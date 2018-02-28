@@ -42,7 +42,7 @@ vf = 0;
 xd2 = SottoTraiettoria( points, v0, vf, t(6) );
 xd = [xd;xd2];
 
-xd(:,4)=0;
+xd(:,4)=pi;
 dxd = [0 0 0 0; diff(xd)/T];
 ddxd = [0 0 0 0; diff(xd)/T];
 end
