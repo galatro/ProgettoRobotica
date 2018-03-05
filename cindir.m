@@ -1,7 +1,7 @@
 function [p, phi, R, A] = cindir(q)
 %coefficienti di Denavit-Hartenberg
 alpha =     [ pi/2  pi/2    0      pi        0           0   ];
-teta  =     [ 0     pi/2    q(3)   q(4)     0           q(6)];
+teta  =     [ 0     pi/2    q(3)   q(4)     0           -q(6)];
 a     =     [ 0     0.35    0.467  0.4005   0           0   ];
 d     =     [ q(1)  q(2)    0      0        -0.8285+q(5) 0   ];
 
