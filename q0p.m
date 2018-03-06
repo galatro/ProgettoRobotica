@@ -29,10 +29,9 @@ b=(dist-d1)*heaviside(dist-d1);
 c=(dist-d2)*heaviside(dist-d2);
 d=(dist-d3)*heaviside(dist-d3);
 e=(dist-d4)*heaviside(dist-d4);
-dw=dw1+2*a*dw2+b*dw3/d1^2+c*dw4/d2^2+d*dw5/d3^2+e*dw6/d4^2;
+dw=dw1+2*a*dw2+3*b*dw3/d1^2+c*dw4/d2^2+2*d*dw5/d3^2+e*dw6/d4^2;
 % caso rettilineo
 %dw=dw1+a/100*dw2+4*b*dw3/d1^2+4*c*dw4/d2^2+4*d*dw5/d3^2+4*e*dw6/d4^2;
 q0 = eval(subs(dw));
 q0=q0';
-q0=[0 0 0 0 0 0]';
 end

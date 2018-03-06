@@ -78,8 +78,8 @@ plot (obstacle1(1), obstacle1(2), '+k')
 plot (pvia(1), pvia(2), 'ok')
 
 %smorzatura
-t0 = 700;
-tf = 3400;
+t0 = 1000;
+tf = 4200;
 [ xd, dxd ] = smorzatura( xd, dxd, t0, tf, T );
 
 plot (xd(:,1), xd(:,2),'k')
@@ -100,8 +100,8 @@ plot (xd2(:,1), xd2(:,2),'b')
 
 
 %smorzatura
-t0 = 5200;
-tf = 8600;
+t0 = 4600;
+tf = 7500;
 [ xd, dxd ] = smorzatura( xd, dxd, t0, tf, T );
 plot (xd(:,1), xd(:,2),'k')
 
@@ -191,8 +191,8 @@ ddxd = [ddxd;ddxd2];
 plot (xd2(:,1), xd2(:,2),'b')
 
 %smorzatura
-t0 = 17000;
-tf = 22000;
+t0 = 15500;
+tf = 21500;
 [ xd, dxd ] = smorzatura( xd, dxd, t0, tf, T );
 plot (xd(:,1), xd(:,2),'k')
 plot (obstacle2(1), obstacle2(2))
@@ -211,8 +211,8 @@ ddxd = [ddxd;ddxd2];
 
 plot (xd2(:,1), xd2(:,2),'b')
 %smorzatura
-t0 = 24000;
-tf = 28000;
+t0 = 24500;
+tf = 27000;
 [ xd, dxd ] = smorzatura( xd, dxd, t0, tf, T );
 plot (xd(:,1), xd(:,2),'k')
 
@@ -242,6 +242,7 @@ xd2(:,4)=0;
 dxd2 = [0 0 0 0; diff(xd2)/T];
 ddxd2 = [0 0 0 0; diff(dxd2)/T];
 xd = [xd;xd2];
+xd(:,4)=pi;
 dxd = [dxd;dxd2];
 ddxd = [ddxd;ddxd2];
 

@@ -18,7 +18,7 @@ pos=zeros(length(t),6);
 vel=zeros(length(t),6);
 acc=zeros(length(t),6);
 
-ostac=zeros(1,2);
+ostac=zeros(2,3);
 k=1;
 
 for i=1:c
@@ -33,7 +33,7 @@ for i=1:c
         %vel
         if abs(dq(j,1,i))>dqmax(j)
             vel(k,j)=vel(k,j)+1;
-            dq(j,1,i)
+            i
         end
         %acc
         if abs(ddq(j,1,i))>ddqmax(j)
@@ -43,10 +43,10 @@ for i=1:c
         p=[q(1,1,i) q(2,1,i)];
         
         if norm(p-o1) < 1
-            ostac(1)=ostac(1)+1;
+            ostac(1,k)=ostac(1,k)+1;
         end
         if norm(p-o2) < 1
-            ostac(2)=ostac(2)+1;
+            ostac(2,k)=ostac(2,k)+1;
         end
     end
 end
