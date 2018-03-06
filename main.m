@@ -7,7 +7,7 @@ T = 0.001; %sample time
 Kp = diag([500 500 500 50]);
 Kn = diag([1 1 1 1 1 1]);
 
-t_t = [1.8; 3.8; 2.7; 0.29; 0.27; 9.5; 5.8; 3.4; 0.29; 0.28];
+t_t = [1.8; 4.1; 3; 0.29; 0.27; 9.5; 5; 3.4; 0.29; 0.28];
 %retta + circonferenza + retta + pickDown + pickUp + retta + circonferenza
 %+ retta + pickDown + pickUp
 tf = sum(t_t)+0.001*(length(t_t)-1); %final time
