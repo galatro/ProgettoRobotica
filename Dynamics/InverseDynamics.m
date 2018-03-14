@@ -7,6 +7,4 @@ function tau = InverseDynamics(qDH, dqDH, ddqDH)
 tau = Bq(qDH)*ddqDH+Cqdq(qDH, dqDH)*dqDH+ViscousFriction(dqDH)+Gravity(qDH);
 
 
-
-
 end

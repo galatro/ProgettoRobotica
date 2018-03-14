@@ -5,7 +5,4 @@ InertiaParameters();
 g = zeros(6,1);
 g(5) = -ml3*9.81;
 
-
-
-
 end

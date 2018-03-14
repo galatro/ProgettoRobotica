@@ -4,9 +4,14 @@ clear all
 syms q1 q2 q3 q4 q5 q6;
 qsym=[q1 q2 q3 q4 q5 q6];
 %condizione di 
-Jg=JacobianoGeometrico(qsym);
-J=[Jg(1:3,:);Jg(6,:)];
+% Jg=JacobianoGeometrico(qsym);
+% J=[Jg(1:3,:);Jg(6,:)];
+J=[1,0,-0.467*sin(q3)-0.4005*sin(q4)*cos(q3)-0.4005*cos(q4)*sin(q3),-0.4005*sin(q4)*cos(q3)-0.4005*cos(q4)*sin(q3),0,0.4005*sin(q4)*cos(q3)-0.4005*sin(q4)*cos(q3);
+  0,1,0.467*cos(q3)-0.4005*sin(q4)*sin(q3)+0.4005*cos(q4)*cos(q3),-0.4005*sin(q4)*sin(q3)+0.4005*cos(q4)*cos(q3) ,0,0.0884+0.4005*cos(q4)*cos(q3)-0.4005*cos(q4)*cos(q3);
+  0,0,0,0,-1,0;
+  0,0,1,1,0,-1];
 w1 = sqrt(det(J*J'));
+
 n = 6 ;
 qim = [-200 -200 -2.7925  -2.7925 0 -2*pi];   %m m rad rad m rad
 qiM = [ 200  200  2.7925   2.7925 0.5 2*pi]; %m m rad rad m  rad

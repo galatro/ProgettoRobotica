@@ -1,4 +1,4 @@
-function [ xd, dxd, ddxd ] = Traiettoria( points, obstacle, t )
+function [ xd, dxd, ddxd ] = Traiettoria( points, obstacle, t, smorz)
 
 %TRAIETTORIA Summary of this function goes here
 %   Detailed explanation goes here
@@ -78,12 +78,12 @@ plot (obstacle1(1), obstacle1(2), '+k')
 plot (pvia(1), pvia(2), 'ok')
 
 %smorzatura
-t0 = 700;
-tf = 3850;
-[ xd, dxd ] = smorzatura( xd, dxd, t0, tf, T );
-
-plot (xd(:,1), xd(:,2),'k')
-
+if smorz
+    t0 = 700;
+    tf = 4000;
+    [ xd, dxd ] = smorzatura( xd, dxd, t0, tf, T );
+    %plot (xd(:,1), xd(:,2),'k')
+end
 %retta da pfermata2 a ppick+5cm 
 points = [pfermata2 ppickaway];
 v0 = 0;
@@ -100,11 +100,12 @@ plot (xd2(:,1), xd2(:,2),'b')
 
 
 %smorzatura
-t0 = 4200;
-tf = 7700;
-[ xd, dxd ] = smorzatura( xd, dxd, t0, tf, T );
-plot (xd(:,1), xd(:,2),'k')
-
+if smorz
+    t0 = 3600;
+    tf = 6600;
+    [ xd, dxd ] = smorzatura( xd, dxd, t0, tf, T );
+    plot (xd(:,1), xd(:,2),'k')
+end
 
 %movimento sull'asse z per il prelievo dell'oggetto
 points = [ppickaway ppick];
@@ -191,11 +192,14 @@ ddxd = [ddxd;ddxd2];
 plot (xd2(:,1), xd2(:,2),'b')
 
 %smorzatura
-t0 = 17000;
-tf = 21000;
-[ xd, dxd ] = smorzatura( xd, dxd, t0, tf, T );
-plot (xd(:,1), xd(:,2),'k')
+if smorz
+    t0 = 15300;
+    tf = 18800;
+    [ xd, dxd ] = smorzatura( xd, dxd, t0, tf, T );
+    plot (xd(:,1), xd(:,2),'k')
+end
 plot (obstacle2(1), obstacle2(2))
+
 
 %retta da pfermata2 a pf
 points = [pfermata2 pfaway];
@@ -211,10 +215,12 @@ ddxd = [ddxd;ddxd2];
 
 plot (xd2(:,1), xd2(:,2),'b')
 %smorzatura
-t0 = 22500;
-tf = 25500;
-[ xd, dxd ] = smorzatura( xd, dxd, t0, tf, T );
-plot (xd(:,1), xd(:,2),'k')
+if smorz
+    t0 = 18500;
+    tf = 23000;
+    [ xd, dxd ] = smorzatura( xd, dxd, t0, tf, T );
+    plot (xd(:,1), xd(:,2),'k')
+end
 
 figure (2)
 plot (dxd(:,1))

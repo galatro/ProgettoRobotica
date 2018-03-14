@@ -1,5 +1,0 @@
-plot(xd(:,3))
-axis([0 562 0.52 0.58])
-xlabel("t [msec]")
-ylabel("coordinata z [m]")
-title("Coordinata z nella fase di pick/place")

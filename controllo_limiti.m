@@ -18,7 +18,7 @@ pos=zeros(length(t),6);
 vel=zeros(length(t),6);
 acc=zeros(length(t),6);
 
-ostac=zeros(2,3);
+ostac=zeros(2,length(t));
 k=1;
 
 for i=1:c
